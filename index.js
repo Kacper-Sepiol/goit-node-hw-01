@@ -1,4 +1,4 @@
-const listaKontaktow = require("./contacts");
+const contacts = require("./contacts");
 const { Command } = require("commander");
 const program = new Command();
 program
@@ -15,22 +15,19 @@ const argv = program.opts();
 function invokeAction({ action, id, name, email, phone }) {
     switch (action) {
         case "list":
-            listaKontaktow.listContacts();
+            contacts.listContacts();
             break;
 
         case "get":
-            // ... id
-            listaKontaktow.getContactById(id);
+            contacts.getContactById(id);
             break;
 
         case "add":
-            // ... name email phone
-            listaKontaktow.addContact(name, email, phone);
+            contacts.addContact(name, email, phone);
             break;
 
         case "remove":
-            // ... id
-            listaKontaktow.removeContact(id);
+            contacts.removeContact(id);
             break;
 
         default:

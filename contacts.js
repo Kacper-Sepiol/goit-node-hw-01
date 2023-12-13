@@ -1,6 +1,5 @@
 const fs = require("fs").promises;
 const { resolve } = require("node:path");
-// const readline = require("readline");
 
 const contactsPath = resolve("./db/contacts.json");
 
