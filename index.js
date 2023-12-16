@@ -1,5 +1,11 @@
-const contacts = require("./contacts");
-const { Command } = require("commander");
+import {
+    listContacts,
+    getContactById,
+    addContact,
+    removeContact,
+} from "./contacts.mjs";
+
+import { Command } from "commander";
 const program = new Command();
 program
     .option("-a, --action <type>", "choose action")
@@ -15,19 +21,19 @@ const argv = program.opts();
 function invokeAction({ action, id, name, email, phone }) {
     switch (action) {
         case "list":
-            contacts.listContacts();
+            listContacts();
             break;
 
         case "get":
-            contacts.getContactById(id);
+            getContactById(id);
             break;
 
         case "add":
-            contacts.addContact(name, email, phone);
+            addContact(name, email, phone);
             break;
 
         case "remove":
-            contacts.removeContact(id);
+            removeContact(id);
             break;
 
         default:

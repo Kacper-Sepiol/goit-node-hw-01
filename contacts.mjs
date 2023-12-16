@@ -1,9 +1,9 @@
-const fs = require("fs").promises;
-const { resolve } = require("node:path");
+import fs from "fs/promises";
+import { resolve } from "node:path";
 
 const contactsPath = resolve("./db/contacts.json");
 
-async function listContacts() {
+export async function listContacts() {
     try {
         const filePath = resolve(contactsPath);
         const contents = await fs.readFile(filePath, { encoding: "utf8" });
@@ -24,7 +24,7 @@ async function listContacts() {
     }
 }
 
-async function getContactById(contactId) {
+export async function getContactById(contactId) {
     try {
         const filePath = resolve(contactsPath);
         const contents = await fs.readFile(filePath, { encoding: "utf8" });
@@ -46,7 +46,7 @@ async function getContactById(contactId) {
     }
 }
 
-async function removeContact(contactId) {
+export async function removeContact(contactId) {
     try {
         const filePath = resolve(contactsPath);
         const contents = await fs.readFile(filePath, { encoding: "utf8" });
@@ -74,7 +74,7 @@ async function removeContact(contactId) {
     }
 }
 
-async function addContact(name, email, phone) {
+export async function addContact(name, email, phone) {
     const newContact = {
         name: name,
         email: email,
@@ -97,10 +97,3 @@ async function addContact(name, email, phone) {
         console.error("Błąd podczas dodawania kontaktu:", error.message);
     }
 }
-
-module.exports = {
-    listContacts,
-    getContactById,
-    removeContact,
-    addContact,
-};
